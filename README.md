@@ -7,8 +7,8 @@ Access the full colab notebook [here](https://colab.research.google.com/drive/1r
 - [Project Outcomes](#project-outcomes)
 - [Background Information](#background-information)
 - [Understanding the Data](#understanding-the-data)
-- Feature Selection
-- Non-Neural Network Models
+- [Feature Selection](#feature-selection)
+- [Non-Neural Network Models](#non-neural-network-models)
 - Neural Network Models
 - Conclusions
 
@@ -44,6 +44,102 @@ The objectives of this project are to:
 - There are 81 features representing the material properties of the superconductors. These 81 features are variations of 9 main features: number of elements, atomic mass,  first ionization energy, atomic radius, density, electron affinity, fusion heat, thermal conductivity, and valence. Click here for a brief introduction to these features.
 
 Here is what the first five rows of the data frame look like before feature selection: 
+
+The target variable is the critical temperature:
+
+<p align="center">
+  <img src="Images/crit_temp.png" alt="Image Alt Text" width="500px" height="auto">
+</p>
+
+- Many materials have critical temperatures between 0 and 25 Kelvin ( -459.67°F to -414.67°F). Another group of materials have critical temperatures between 65 and 95 Kelvin (-337.67°F to -297.67°F).
+
+## Feature Selection
+When feeding data into our models, we must decide which features are relevant. There are several ways to do this. We examine four techniques of feature selection. 
+1) Using all 81 features (baseline metric) 
+2) Using only the features that have correlation coefficients with the target variable of over 0.5 
+3) Using Principal Component Analysis 
+4) For our linear models, using the RF and XGB 10 most important features (more on this later)
+
+## Non Neural Network Models
+
+We consider these regression models: 
+- Linear Regression 
+- Ridge Regression 
+- Support Vector Regression 
+- Decision Tree Regression 
+- Random Forest Regression 
+- XGB Regression
+
+We look for a model and feature selection technique that optimizes our evaluation metrics (minimizes RMSE and maximizes R^2). For more information on both the models and the evaluation metrics, click here. 
+
+Before we begin modeling, we create a simple pipeline that scales whatever set of input features we use for every model. Feature scaling ensures that all features have similar magnitudes, which prevents certain features (features with larger magnitudes) from dominating the training process.
+
+```python
+scaled_pipelines = {
+    'Lin reg scaled': Pipeline([
+        ('scaler', StandardScaler()),
+        ('Linear Regression', LinearRegression())
+    ]),
+    'Ridge reg scaled': Pipeline([
+        ('scaler', StandardScaler()),
+        ('Ridge Regression', Ridge(max_iter=10000))
+    ]),
+    'Lasso reg scaled': Pipeline([
+        ('scaler', StandardScaler()),
+        ('Lasso Regression', Lasso(max_iter=10000))
+    ]),
+    'SVR scaled': Pipeline([
+        ('scaler', StandardScaler()),
+        ('Support Vector Regressor', SVR())
+    ]),
+    'DT scaled': Pipeline([
+        ('scaler', StandardScaler()),
+        ('Decision Tree', DTR())
+    ]),
+    'RF scaled': Pipeline([
+        ('scaler', StandardScaler()),
+        ('Random Forest', RFR())
+    ]),
+    'XGB scaled': Pipeline([
+        ('scaler', StandardScaler()),
+        ('XGB', XGB.XGBRegressor(random_state=42))
+    ]),
+}
+```
+- Since we are trying to optimize the evaluation metrics, we must tune our parameters to see which parameters yield the best results. We then save the best estimator for each model type and select which of the tuned models yields the lowest RMSE and the highest R^2. 
+- We use GridSearchCV to exhaustively check all possible combinations of hyperparameters from the parameter grid for a particular model. The hyperparameters we check come from this parameter grid:
+
+
+
+```python
+param_grid = {
+    'Lin reg': {},
+    'Ridge reg': {'Ridge Regression__alpha': [0.1, 1.0]},
+    'Lasso reg': {'Lasso Regression__alpha': [0.1, 1.0]},
+    'SVR': {
+        'Support Vector Regressor__C': [0.1, 1.0],
+        'Support Vector Regressor__kernel': ['linear', 'rbf']
+    },
+    'DT': {'Decision Tree__max_depth': [None, 10]},
+    'RF': {
+        'Random Forest__n_estimators': [100],
+        'Random Forest__max_depth': [None, 10]
+    },
+    'XGB': {
+        'XGB__n_estimators': [100, 200],
+        'XGB__learning_rate': [0.01, 0.1],
+        'XGB__max_depth': [3, 4],
+        'XGB__min_child_weight': [1, 3],
+        'XGB__subsample': [0.8, 0.9],
+        'XGB__colsample_bytree': [0.8, 0.9],
+        'XGB__gamma': [0, 0.1]
+    }
+}
+```
+Using a for loop with GridSearch, we save the best estimators for each model type in the best estimator list. We then compare the best estimators for each of the models.
+
+These were the results for our models when we used all 81 features: 
+
 
 
 
