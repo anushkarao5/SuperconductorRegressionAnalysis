@@ -209,11 +209,30 @@ Results for non-NN models using all features:
 - Note that PCA is used primarily in linear regression models to deal with multicollinearity. We do not expect this technique to perform well on models that are equipped to handle highly correlated data in a large feature space. 
 - For our model, our inputs are the first 16 PCs. These 16 PCs explain 95% of the variation in the target variable.
 
-Insert image 
-- Of all our input features, PCA performed the worst. 
+ <p align="center">
+  <img src="Images/PCA.png" alt="Image Alt Text" width="1000px" height="auto">
+</p>
+
+Of all our input feature sets, PCA resulted in the worst performance.
+
+<p align="center">
+  <img src="Images/RMSE_PCA.png" alt="Image Alt Text" width="1000px" height="auto">
+</p>
+
+<p align="center">
+  <img src="Images/R2_PCA.png" alt="Image Alt Text" width="1000px" height="auto">
+</p>
+
+
 - Unsurprisingly, PCA increased the RMSE and decreased the R^2 value for the non-linear models. Since SVR and tree-based models are known for their capabilities to handle large feature numbers and multicollinearity relatively well, reducing the number of features could have led to information loss. 
 PCA often improves scores in linear models. Why did our linear model scores become less optimal? 
 - Given how well our non-linear models fit the data, we have a strong assumption that the features are not linearly related to the target variable. PCA does not change the linear assumption between features and target variables. It only transforms the original data set to a new data set of linearly uncorrelated features. However, if the relationship between the features and target variables is nonlinear,  most models that have a linear assumption will not perform well.
+
+## Neural Network Models
+- Next we explored how neural networks impact our performance. We explore three popular neural networks: a simple feed-forward neural network, a convolutional neural network, and a long short-term memory neural network. Note that we use extremely basic versions of these neural networks. For more information on how these networks work, click here.
+
+
+
 
 
 
