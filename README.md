@@ -141,11 +141,11 @@ Using a for loop with GridSearch, we save the best estimators for each model typ
 These were the results for our models when we used all 81 features: 
 
 <p align="center">
-  <img src="Images/RMSE_all_features" alt="Image Alt Text" width="500px" height="auto">
+  <img src="Images/RMSE_all_features.png" alt="Image Alt Text" width="500px" height="auto">
 </p>
 
 <p align="center">
-  <img src="Images/R^2_all_features" alt="Image Alt Text" width="500px" height="auto">
+  <img src="Images/R^2_all_features.png" alt="Image Alt Text" width="500px" height="auto">
 </p>
 
 
