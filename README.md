@@ -141,9 +141,40 @@ Using a for loop with GridSearch, we save the best estimators for each model typ
 These were the results for our models when we used all 81 features: 
 
 <p align="center">
-  <img src="Images/RMSE_all_features.png" alt="Image Alt Text" width="500px" height="auto">
+  <img src="Images/RMSE_all_features.png" alt="Image Alt Text" width="600px" height="auto">
 </p>
 
+<p align="center">
+  <img src="Images/R^2_all_features.png" alt="Image Alt Text" width="600px" height="auto">
+</p>
+
+Results for non-NN models using all features: 
+- As we can see, the RF algorithm performs best (RMSE= 9.41 and R^2=0.92) 
+- The XGB algorithm is a close second (RMSE = 10.74 and R^2= 0.90). 
+- Using all features, RF and XGB perform best: tree-based models are well equipped to handle multicollinearity, nonlinearity, and high dimensionality
+- Our linear models performed the worst using all 81 variables. This was largely due to the high multicollinearity between the variables.
+
+Diving into Feature Selection: 
+To try to improve our model performance, especially our linear model performance, we used 3 feature selection techniques: 
+1) RF and XGB feature selection. 
+- After running the RF and XGB models using all our data, we used the feature importance scores built into both algorithms to determine which features were most important in making prediction. Instead of inputting all 81 variables, we used only the top 10 most important features from RF and XGB. After accounting for overlap, we found 13 RFXGB features to plug into our linear models. 
+- Surprisingly, the variations in these 13 features accounted for a minimum of 65% of the variation in the critical temperature for our linear regression models. In comparison, using all 81 features accounted for only 70% variation in the linear models. 
+- This means that variation in 60 features resulted in only 5% of the variation in our target variable!
+- Using RF and XGB, we found a subset of 13 features that are most important in predicting the critical temperature. 
+Insert image here 
+2) Correlation Coefficient Feature selection 
+- We next tried to plug in the 25 features that had a correlation coefficient magnitude of greater than 0.5 with the target variable. 
+- Using these selected features, the RMSE scores decreased only slightly in comparison to using the 13 selected features. 
+- Moreover, the R^2 values are almost identical when using the 13 RFXGB features and the 25 selected correlation features. 
+- This means that the RF and XGB algorithms found the least amount of features that explained the most amount of variance. Using these 13 features helps us create  a less complex, more interpretable model. 
+3) Principal Component Analysis: 
+- Principal component analysis (PCA) is a dimensionality technique used to transform a large number of correlated features into a lower-dimensional set of uncorrelated features. The goal is to reduce the number of features while retaining the most information. Click here for a more detailed explanation. 
+- Note that PCA is used primarily in linear regression models to deal with multicollinearity. We do not expect this technique to perform well on models that are equipped to handle highly correlated data in a large feature space. 
+For our model, our inputs are the first 16 PCs. These 16 PCs explain 95% of the variation in the target variable. 
+Insert image 
+- Unsurprisingly, PCA increased the RMSE and decreased the R^2 value for the non-linear models. Since SVR and tree-based models are known for their capabilities to handle large feature numbers and multicollinearity relatively well, reducing the number of features could have led to information loss. 
+PCA often improves scores in linear models. Why did our linear model scores become less optimal? 
+- Given how well our non-linear models fit the data, we have a strong assumption that the features are not linearly related to the target variable. PCA does not change the linear assumption between features and target variables. It only transforms the original data set to a new data set of linearly uncorrelated features. However, if the relationship between the features and target variables is nonlinear,  most models that have a linear assumption will not perform well.
 
 
 
