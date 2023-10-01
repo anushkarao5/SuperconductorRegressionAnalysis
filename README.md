@@ -144,9 +144,6 @@ These were the results for our models when we used all 81 features:
   <img src="Images/RMSE_all_features.png" alt="Image Alt Text" width="500px" height="auto">
 </p>
 
-<p align="center">
-  <img src="Images/R^2_all_features.png" alt="Image Alt Text" width="500px" height="auto">
-</p>
 
 
 
