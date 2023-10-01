@@ -10,7 +10,7 @@ Access the full colab notebook [here](https://colab.research.google.com/drive/1r
 - [Feature Selection](#feature-selection)
 - [Non-Neural Network Models](#non-neural-network-models)
 - [Neural Network Models](#neural-network-models)
-- Conclusions
+- [Conclusions](#conclusions)
 
 ## Project Objective
 The objectives of this project are to:
@@ -261,6 +261,24 @@ Why did the SNN and CNN perform better?
 - Click here for the 25 of 81 features responsible for 65% of the variability in the target variable for all models. 
 
 ### Best Models 
+
+<p align="center">
+  <img src="Images/all_models_rmse.png" alt="Image Alt Text" width="1000px" height="auto">
+</p>
+
+<p align="center">
+  <img src="Images/all_models_r2.png" alt="Image Alt Text" width="1000px" height="auto">
+</p>
+
+- Given how poorly the linear regression models performed, it is likely that the relationship between the input and target variables is not linear.
+- Tree based models, in particular Random Forest and XGBoost, using all features performed best due to their ability to handle high dimensional data. In contrast to linear models, tree based models can handle multicollinearity by creating hierarchies of dependencies between features. This is important given how highly correlated our data is.
+- Using only a few layers, our SNN and CNN models were able to perform within 2 points RMSE of our tree based models.
+
+**Overall, our best models were Random Forest, XGBoost, CNNs and SNNs.**
+
+It is important to remember that the results of each model were based on a specific set of hyperparameters. The order of model performance could completely change with different hyperparameters! Still, these examples still provide intuition behind how each model approaches regression problems.
+
+
 
 
 
