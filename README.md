@@ -9,7 +9,7 @@ Access the full colab notebook [here](https://colab.research.google.com/drive/1r
 - [Understanding the Data](#understanding-the-data)
 - [Feature Selection](#feature-selection)
 - [Non-Neural Network Models](#non-neural-network-models)
-- Neural Network Models
+- [Neural Network Models](#neural-network-models)
 - Conclusions
 
 ## Project Objective
@@ -230,6 +230,33 @@ PCA often improves scores in linear models. Why did our linear model scores beco
 
 ## Neural Network Models
 - Next we explored how neural networks impact our performance. We explore three popular neural networks: a simple feed-forward neural network, a convolutional neural network, and a long short-term memory neural network. Note that we use extremely basic versions of these neural networks. For more information on how these networks work, click here.
+
+<p align="center">
+  <img src="Images/NN_metrics.png" alt="Image Alt Text" width="1000px" height="auto">
+</p>
+
+Why did the LSTM model perform significantly worse?
+- LSTM models assume that there are temporal dependencies in the data. This means that events at one point in time are related to events at a later point in time. Let us consider this in terms of our LSTM model. The LSTM layer looks at the 81 features of a particular layer and considers each of these features to be its own time steps. This assumption is obviously flawed because the 81st feature did not occur before the first feature. Moreover, the LSTM model assumes that features that occur later on (for example the 75th features) are related to the values of the features that occurred earlier on (like the 10th feature).
+- However, since we are dealing only with a set of numbers for a particular observation, this is likely not the case. The values for each feature are not necessarily related to the values of previous features.
+
+Why did the SNN and CNN perform better? 
+- Feedforward simple neural networks are capable of capturing non-linear relationships between input and target variables. Based on the poor linear regression scores, it is very likely that the relationship between the input and output variables is not linear. SNNs are able to work with nonlinear data.
+-  CNNs have many similar benefits. Moreover, using both convolutional layers and pooling operations, CNNs are able to build hierarchies of features. These ranked features can help the model understand the relationships between the input variables and the target variables.
+-  CNNs can learn local patterns by sliding over the data in windows. This may help the model understand how features relate to one another.
+-  For a more detailed breakdown, click here. 
+
+
+
+## Conclusions 
+
+### Feature Importance 
+- Using the random forest and XGBoost feature selection attribute, we found 13 of 81 features whose variance explained a minimum of 65% of the variance in the target variables for non NN models. This could be important when predicting the critical temperature of new materials.
+- The below 13 of 81 features are responsible for 65% of the variability in the target variable for the non-tree-based models.
+
+- Click here for the 25 of 81 features responsible for 65% of the variability in the target variable for all models. 
+
+
+
 
 
 
