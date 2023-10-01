@@ -195,6 +195,15 @@ Results for non-NN models using all features:
 - This means that the RF and XGB algorithms found the least amount of features that explained the most amount of variance. Using these 13 features helps us create  a less complex, more interpretable model.
 
 
+<p align="center">
+  <img src="RMSE_corr_values.png" alt="Image Alt Text" width="1000px" height="auto">
+</p>
+
+<p align="center">
+  <img src="R^2_corr_values.png" alt="Image Alt Text" width="1000px" height="auto">
+</p>
+
+
 3) Principal Component Analysis: 
 - Principal component analysis (PCA) is a dimensionality technique used to transform a large number of correlated features into a lower-dimensional set of uncorrelated features. The goal is to reduce the number of features while retaining the most information. Click here for a more detailed explanation. 
 - Note that PCA is used primarily in linear regression models to deal with multicollinearity. We do not expect this technique to perform well on models that are equipped to handle highly correlated data in a large feature space. 
