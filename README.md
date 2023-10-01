@@ -58,7 +58,7 @@ When feeding data into our models, we must decide which features are relevant. T
 1) Using all 81 features (baseline metric) 
 2) Using only the features that have correlation coefficients with the target variable of over 0.5 
 3) Using Principal Component Analysis 
-4) For our linear models, using the RF and XGB 10 most important features (more on this later)
+4) For our non-treebased models, using the most important features determined by the RF and XGB algorithm (more on this later)
 
 ## Non Neural Network Models
 
@@ -136,9 +136,9 @@ param_grid = {
     }
 }
 ```
-Using a for loop with GridSearch, we save the best estimators for each model type in the best estimator list. We then compare the best estimators for each of the models.
+Using a for loop with GridSearch, we save the best estimators for each model type in the best estimator list. We then compare the best estimators for each of the models. 
 
-These were the results for our models when we used all 81 features: 
+### Using All Features 
 
 <p align="center">
   <img src="Images/RMSE_all_features.png" alt="Image Alt Text" width="600px" height="auto">
