@@ -157,12 +157,34 @@ Results for non-NN models using all features:
 ### Using RF and XGB Feature Selection 
 - After running the RF and XGB models using all our data, we used the feature importance scores built into both algorithms to determine which features were most important in making predicting the critical temperature. Instead of inputting all 81 variables, we used only the top 10 most important features from RF and XGB. After accounting for overlap, we found 13 RFXGB features to plug into our linear models.
 
+<p align="center">
+  <img src="Images/RFXGB_FI_graphs.png" alt="Image Alt Text" width="1000px" height="auto">
+</p>
+
+- The thirteen features:
+'wtd_std_Valence',
+ 'wtd_mean_ThermalConductivity',
+ 'std_atomic_mass',
+ 'wtd_std_ElectronAffinity',
+ 'std_Density',
+ 'wtd_entropy_ThermalConductivity',
+ 'range_atomic_radius',
+ 'gmean_ElectronAffinity',
+ 'range_ThermalConductivity',
+ 'wtd_gmean_Valence',
+ 'mean_Density',
+ 'wtd_mean_Valence',
+ 'wtd_gmean_ThermalConductivity'
 
 
-- Surprisingly, the variations in these 13 features accounted for a minimum of 65% of the variation in the critical temperature for our linear regression models. In comparison, using all 81 features accounted for only 70% variation in the linear models. 
+
+
+- Using only a reduced set of 13 features, the RMSE scores went up a few points in the non-tree-based models, likely due to a loss of information. However, R^2 is the more interesting metric here.
+- Surprisingly, the variations in these 13 features accounted for a minimum of 65% of the variation in the critical temperature for our non-tree-based models. In comparison, using all 81 features accounted for only 70% variation in the linear models. 
 - This means that variation in 60 features resulted in only 5% of the variation in our target variable!
-- Using RF and XGB, we found a subset of 13 features that are most important in predicting the critical temperature. 
-Insert image here 
+- Using RF and XGB, we found a subset of 13 features that are most important in predicting the critical temperature.
+
+
 2) Correlation Coefficient Feature selection 
 - We next tried to plug in the 25 features that had a correlation coefficient magnitude of greater than 0.5 with the target variable. 
 - Using these selected features, the RMSE scores decreased only slightly in comparison to using the 13 selected features. 
