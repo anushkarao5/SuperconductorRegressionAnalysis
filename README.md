@@ -253,7 +253,15 @@ Why did the SNN and CNN perform better?
 - Using the random forest and XGBoost feature selection attribute, we found 13 of 81 features whose variance explained a minimum of 65% of the variance in the target variables for non NN models. This could be important when predicting the critical temperature of new materials.
 - The below 13 of 81 features are responsible for 65% of the variability in the target variable for the non-tree-based models.
 
+
+<p align="center">
+  <img src="Images/13_Features.png" alt="Image Alt Text" width="400px" height="auto">
+</p>
+
 - Click here for the 25 of 81 features responsible for 65% of the variability in the target variable for all models. 
+
+### Best Models 
+
 
 
 
