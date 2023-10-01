@@ -154,10 +154,11 @@ Results for non-NN models using all features:
 - Using all features, RF and XGB perform best: tree-based models are well equipped to handle multicollinearity, nonlinearity, and high dimensionality
 - Our linear models performed the worst using all 81 variables. This was largely due to the high multicollinearity between the variables.
 
-Diving into Feature Selection: 
-To try to improve our model performance, especially our linear model performance, we used 3 feature selection techniques: 
-1) RF and XGB feature selection. 
-- After running the RF and XGB models using all our data, we used the feature importance scores built into both algorithms to determine which features were most important in making prediction. Instead of inputting all 81 variables, we used only the top 10 most important features from RF and XGB. After accounting for overlap, we found 13 RFXGB features to plug into our linear models. 
+### Using RF and XGB Feature Selection 
+- After running the RF and XGB models using all our data, we used the feature importance scores built into both algorithms to determine which features were most important in making predicting the critical temperature. Instead of inputting all 81 variables, we used only the top 10 most important features from RF and XGB. After accounting for overlap, we found 13 RFXGB features to plug into our linear models.
+
+
+
 - Surprisingly, the variations in these 13 features accounted for a minimum of 65% of the variation in the critical temperature for our linear regression models. In comparison, using all 81 features accounted for only 70% variation in the linear models. 
 - This means that variation in 60 features resulted in only 5% of the variation in our target variable!
 - Using RF and XGB, we found a subset of 13 features that are most important in predicting the critical temperature. 
