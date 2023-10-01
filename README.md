@@ -188,11 +188,13 @@ Results for non-NN models using all features:
 - Using RF and XGB, we found a subset of 13 features that are most important in predicting the critical temperature.
 
 
-2) Correlation Coefficient Feature selection 
+### Using Correlation Coefficient Feature selection 
 - We next tried to plug in the 25 features that had a correlation coefficient magnitude of greater than 0.5 with the target variable. 
 - Using these selected features, the RMSE scores decreased only slightly in comparison to using the 13 selected features. 
 - Moreover, the R^2 values are almost identical when using the 13 RFXGB features and the 25 selected correlation features. 
-- This means that the RF and XGB algorithms found the least amount of features that explained the most amount of variance. Using these 13 features helps us create  a less complex, more interpretable model. 
+- This means that the RF and XGB algorithms found the least amount of features that explained the most amount of variance. Using these 13 features helps us create  a less complex, more interpretable model.
+
+
 3) Principal Component Analysis: 
 - Principal component analysis (PCA) is a dimensionality technique used to transform a large number of correlated features into a lower-dimensional set of uncorrelated features. The goal is to reduce the number of features while retaining the most information. Click here for a more detailed explanation. 
 - Note that PCA is used primarily in linear regression models to deal with multicollinearity. We do not expect this technique to perform well on models that are equipped to handle highly correlated data in a large feature space. 
