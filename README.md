@@ -4,6 +4,7 @@ Access the full colab notebook [here](https://colab.research.google.com/drive/1r
 
 ## Table of Contents:
 - [Project Objective](#project-objective)
+- [Project Outcomes](#project-outcomes)
 - [Background Information](#background-information)
 - [Understanding the Data](#understanding-the-data)
 - Feature Selection
@@ -43,8 +44,6 @@ The objectives of this project are to:
 - There are 81 features representing the material properties of the superconductors. These 81 features are variations of 9 main features: number of elements, atomic mass,  first ionization energy, atomic radius, density, electron affinity, fusion heat, thermal conductivity, and valence. Click here for a brief introduction to these features.
 
 Here is what the first five rows of the data frame look like before feature selection: 
-
-![Alt Text](https://drive.google.com/file/d/1qBANKNSQDCMQ_4t_CiH4xgmLMCqHlJcK/view?usp=drive_link)
 
 
 
