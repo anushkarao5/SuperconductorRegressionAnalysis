@@ -196,11 +196,11 @@ Results for non-NN models using all features:
 
 
 <p align="center">
-  <img src="RMSE_corr_values.png" alt="Image Alt Text" width="1000px" height="auto">
+  <img src="Images/RMSE_corr_values.png" alt="Image Alt Text" width="1000px" height="auto">
 </p>
 
 <p align="center">
-  <img src="R^2_corr_values.png" alt="Image Alt Text" width="1000px" height="auto">
+  <img src="Images/R^2_corr_values.png" alt="Image Alt Text" width="1000px" height="auto">
 </p>
 
 
