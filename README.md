@@ -176,6 +176,9 @@ Results for non-NN models using all features:
  'wtd_mean_Valence',
  'wtd_gmean_ThermalConductivity'
 
+<p align="center">
+  <img src="Images/RF_XGB_Diff.png" alt="Image Alt Text" width="1000px" height="auto">
+</p>
 
 
 
