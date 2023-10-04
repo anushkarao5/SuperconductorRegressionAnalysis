@@ -20,8 +20,8 @@ The objectives of this project are to:
 
 ## Project Outcomes 
 - Developed a Random Forest model that predicted the critical temperature of a superconductor with root mean square error of 9.41 and R^2 value of 0.92
-- Found a subset of 13 of 81 features that explained a minimum of 65% of the variability in the target variable for all linear models
-- Found a subset of 25 of 81 features that explained a minimum of 65% of the variability in the target variable for all non-neural network models
+- Found a subset of 13 of 81 features whose variance explained a minimum of 65% of the variability in the target variable for all linear models
+- Found a subset of 25 of 81 features whose variance explained a minimum of 65% of the variability in the target variable for all non-neural network models
 
 
 ## Background Information
