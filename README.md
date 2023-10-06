@@ -37,7 +37,7 @@ features whose variance explained a minimum of 65% of the variability in the tar
   <img src="Images/supercon_image.png" alt="Image Alt Text" width="500px" height="auto">
 </p>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Image credits](https://futurism.com/claim-room-temperature-superconductor-tearing-apart)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Image credits](https://futurism.com/claim-room-temperature-superconductor-tearing-apart)
 
 
 
