@@ -42,8 +42,9 @@ features whose variance explained a minimum of 65% of the variability in the tar
 
 <div style="text-align: center;">
   <img src="Images/supercon_image.png" alt="Image Alt Text" width="500px" height="auto">
-  <p><a href="https://futurism.com/claim-room-temperature-superconductor-tearing-apart">Image credits</a></p>
+  <p style="text-align: center;"><a href="https://futurism.com/claim-room-temperature-superconductor-tearing-apart">Image credits</a></p>
 </div>
+
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Type 2 superconductors allow some magnetic fields into their shields without losing their superconducting properties. MRI machines require strong magnetic fields to create high-quality images. Since Type 2 superconductors allow the controlled entry of magnetic fields, they are ideal for creating the magnetic fields needed for MRIs.
