@@ -59,7 +59,8 @@ The target variable is the critical temperature:
   <img src="Images/crit_temp.png" alt="Image Alt Text" width="500px" height="auto">
 </p>
 
-- Many materials have critical temperatures between 0 and 25 Kelvin ( -459.67°F to -414.67°F). Another group of materials have critical temperatures between 65 and 95 Kelvin (-337.67°F to -297.67°F).
+- Many materials have critical temperatures between 0 and 25 Kelvin ( -459.67°F to -414.67°F). Another group of materials has critical temperatures between 65 and 95 Kelvin (-337.67°F to -297.67°F). Naturally, the materials in the second group are easier to use because they require higher temperatures. Still, -300°F is far from room temperature (~ 70°F). Even the higher temperature superconductors only enter their superconductive state at 140 K (-207°F). Keeping superconductors at or below their extremely low critical temperatures presents a significant challenge when working with these materials. 
+
 
 ## Feature Selection
 When feeding data into our models, we must decide which features are relevant. There are several ways to do this. We examine four techniques of feature selection. 
