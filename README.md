@@ -1,5 +1,8 @@
 # SuperconductorRegressionAnalysis
 
+[Found a subset of 25 of 81](https://htmlpreview.github.io/?https://github.com/anushkarao5/SuperconductorRegressionAnalysis/blob/main/MoreInfo/significant_features.html){:target="_blank"} features whose variance explained a minimum of 65% of the variability in the target variable for all non-neural network models
+
+
 Access the full colab notebook [here](https://colab.research.google.com/drive/1rvXt8XBbyUkSVo73d0YCBkaSmE9ebSRx?usp=sharing) for all code and in-depth explanations. 
 
 ## Table of Contents:
