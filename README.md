@@ -20,8 +20,8 @@ The objectives of this project are to:
 
 ## Project Outcomes 
 - Developed a Random Forest model that predicted the critical temperature of a superconductor with root mean square error of 9.41 and R^2 value of 0.92
-- Found a subset of [13 of 81](Images/13_Features.png) features whose variance explained a minimum of 65% of the variability in the target variable for all linear models
-- Found a subset of [25 of 81](Images/25_features.png) features whose variance explained a minimum of 65% of the variability in the target variable for all non-neural network models
+- Found a subset of [13 of 81](https://htmlpreview.github.io/?https://github.com/anushkarao5/SuperconductorRegressionAnalysis/blob/main/MoreInfo/significant_features.html) features whose variance explained a minimum of 65% of the variability in the target variable for all linear models
+- Found a subset of [25 of 81](https://htmlpreview.github.io/?https://github.com/anushkarao5/SuperconductorRegressionAnalysis/blob/main/MoreInfo/significant_features.html) features whose variance explained a minimum of 65% of the variability in the target variable for all non-neural network models
 
 ## Background Information
 
