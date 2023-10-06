@@ -79,9 +79,12 @@ We consider these regression models:
 - Random Forest Regression 
 - XGB Regression
 
-We look for a model and feature selection technique that optimizes our evaluation metrics (minimizes RMSE and maximizes R^2). For more information on both the models and the evaluation metrics, click here. 
 
-Before we begin modeling, we create a simple pipeline that scales whatever set of input features we use for every model. Feature scaling ensures that all features have similar magnitudes, which prevents certain features (features with larger magnitudes) from dominating the training process.
+- We look for a model and feature selection technique that optimizes our evaluation metrics (minimizes RMSE and maximizes R^2). For more information on both the models and the evaluation metrics, click here.
+
+- Before we begin modeling, we create a simple pipeline that scales all input features for every model. Feature scaling ensures that all features have similar magnitudes, which prevents certain features (features with larger magnitudes) from dominating the training process.
+
+
 
 ```python
 scaled_pipelines = {
@@ -115,8 +118,10 @@ scaled_pipelines = {
     ]),
 }
 ```
-- Since we are trying to optimize the evaluation metrics, we must tune our parameters to see which parameters yield the best results. We then save the best estimator for each model type and select which of the tuned models yields the lowest RMSE and the highest R^2. 
-- We use GridSearchCV to exhaustively check all possible combinations of hyperparameters from the parameter grid for a particular model. The hyperparameters we check come from this parameter grid:
+
+- Since we are trying to optimize the evaluation metrics, we must first find the best versions of each model type before comparing the tuned models. To find the best version of each model type, we must find the combination of hyperparameters that result in the best performance for a particular model type. We then save the best estimator for each model type and compare which of the tuned model types yields the lowest RMSE and the highest R^2.
+  
+- We use GridSearchCV to exhaustively check all hyperparameter combinations for a particular model. The hyperparameters we use come from this parameter grid: 
 
 
 
@@ -145,7 +150,12 @@ param_grid = {
     }
 }
 ```
-Using a for loop with GridSearch, we save the best estimators for each model type in the best estimator list. We then compare the best estimators for each of the models. 
+
+- Using a for loop with GridSearchCV, we save the best estimators for each model type in the best estimator list. We then compare the tuned estimators for each of the model types.
+  
+In simple terms, we are: 
+1) Comparing many versions of the same model type (ex: linear regression)
+2) Comparing the best version of each model type (ex: linear regression, ridge, lasso, ect)
 
 ### Using All Features 
 
