@@ -48,8 +48,7 @@ features whose variance explained a minimum of 65% of the variability in the tar
 ## Understanding the Data
 - This data was taken from [UC Irvine's machine learning repository](https://archive.ics.uci.edu/dataset/464/superconductivty+data).
 - The superconductor data set contains 21263 superconducting materials.
-- There are 81 features representing the material properties of the superconductors. These 81 features are variations of 9 main features: number of elements, atomic mass,  first ionization energy, atomic radius, density, electron affinity, fusion heat, thermal conductivity, and valence. <details> Click <summary>here</summary>
- for a brief introduction to these features.
+- There are 81 features representing the material properties of the superconductors. These 81 features are variations of 9 main features: number of elements, atomic mass,  first ionization energy, atomic radius, density, electron affinity, fusion heat, thermal conductivity, and valence. Click here for a brief introduction to these features.
 
 
 This is the content that you can expand or collapse by clicking the summary above.
