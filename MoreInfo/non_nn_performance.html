@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        /* Add your CSS styles here */
+        p {
+            text-align: justify;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        details {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Non-Neural Network Model Performance</h1>
+
+    <h2>Using All Features</h2>
+
+    <details>
+    <summary>Click to Expand</summary>
+    <p align="center">
+        <img src="https://drive.google.com/uc?id=1-Btx1rjYKPw1Kqx7rVDfInKSGhA0ObsJ" width="500" height="auto">
+    </p>
+
+    <p align="center">
+        <img src="https://drive.google.com/uc?id=1h5aWTxNL5AhhJmitY8YV7FRh9_sqCNkM" width="500" height="auto">
+    </p>
+
+    <ul>
+        <li>When looking at RMSE, the tree-based models (RF, XGB, and DT) performed almost twice as well as our linear models (SVR was the middle man).</li>
+        <li>Why is it that tree-based models performed significantly better than the linear models?
+            <ul>
+                <li>Nonlinearity: An obvious reason is that the relationship between the critical temperature and the individual features is not linear. In this case, the assumption of the linear regression model is violated, which means that linear regression is likely not the best fit for the model.</li>
+                <li>Multicollinearity: Moreover, linear regression models assume little to no multicollinearity. They assume that the effect of each variable on the critical temperature is independent. In problems where feature interaction is at play (like ours, given the heat map of our highly correlated variables) tree-based models are often the best idea.</li>
+                <li>For a simple example of how tree-based models handle feature interactions, we need only look at the previous example:</li>
+            </ul>
+        </li>
+        <p align="center">
+            <img src="https://drive.google.com/uc?id=15wNx0bnaQ0hmx3gUUF4idJpJ33TsY7b0" width="500" height="auto">
+        </p>
+        <ul>
+            <li>Each child node is created from the splitting node above it. The values 10 and 15 come from the interaction of 2 features: years worked and previous jobs held. In this way, tree-based models can be optimal for handling feature interaction.</li>
+        </ul>
+        <li>Why XGB and Random Forest perform best:</li>
+        <ul>
+            <li>Of our three tree-based models, it is intuitive that XGB and Random Forest perform better than decision trees. They are composed of multiple decision trees.</li>
+            <li>Random forest is less sensitive to noise and outliers due to the bootstrapping method used to build each tree, which could be a reason why RF performed slightly better than XGB.</li>
+        </ul>
+    </ul>
+</details>
+
+
+    <h2 style="margin-bottom: 20px;">Using RF and XGB Feature Selection</h2>
+
+    <details>
+        <summary>Click to Expand</summary>
+        <div style="padding-top: 10px; display: flex; flex-direction: column; align-items: center; ">
+            <div style="margin-bottom: 10px;">
+                <img src="https://drive.google.com/uc?id=1-vwW7ztpnInQ5ABrGtbtfcMRQ-QKLjHn" width="800">
+            </div>
+            <div>
+                <h3>RMSE</h3>
+                <ul>
+                    <li>The RMSE for linear regression, ridge regression, and lasso regression increased when using only the RF and XGB selected features. Why is this?
+                        <ul>
+                            <li>Loss of information: It is likely that we have lost potentially relevant information, as linear regression models usually use all features to make predictions.</li>
+                            <li>Incorrect linear relationship assumption: We also must question whether there is a linear relationship between the predictors and the target variable. If there is not a significant linear relationship, these models will perform poorly.</li>
+                            <li>Multicollinearity: Moreover, while our selected random forest and XGB features are less correlated, there is still multicollinearity, which contradicts the independence of independent variable assumption. This multicollinearity makes it challenging for our linear regression models to get an accurate slope estimate of the features, as it is unable to distinguish the effect of a single variable on the output variable.</li>
+                        </ul>
+                    </li>
+                    <li>Our RMSE stayed roughly the same (the slightest decrease) using support vector regression. Why is this?
+                        <ul>
+                            <li>Nonlinearity: SVR is able to capture nonlinear relationships between features and the target variable, which may be the case in our data.</li>
+                            <li>Handling Multicollinearity: SVR handles multicollinearity relatively well. Unlike linear regression which cares about specific coefficient values, SVR focuses on finding a hyperplane that minimizes the errors of regression while ignoring coefficient slope values.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>R^2</h3>
+                <ul>
+                    <li>While a 3-4 point increase in RMSE is significant, we must consider how our R squared changed.</li>
+                    <li>Variation in only 13 variables resulted in around 65% variation in the critical temperature for our linear regression models, and a 78% variation in the critical temperature for our SVR models.</li>
+                    <li>Let us take a look at our R^2 using all 81 features-- around 70% in the linear regression models-- and around 75% in SVR models.</li>
+                    <li>This means that over 60 of the features resulted in only 5% variation in the target variable for our linear regression models.</li>
+                    <li>The R^2 for SVR even went up by 3% after removing 60 features!</li>
+                    <li>This could be because there are less irrelevant variables and our model could generalize better.</li>
+                    <li>It seems that random forest and xgb algorithms have helped us detect some of the most important features in our data!</li>
+                </ul>
+            </div>
+        </div>
+    </details>
+
+
+
+    <h2 h2 style="margin-bottom: 20px";>Using Correlation Coefficient Feature Selection</h2>
+
+
+    <details>
+        <summary>Click to Expand</summary>
+            <div style="padding-top: 20px; display: flex; flex-direction: column; align-items: center;">
+                <div style="margin-bottom: 10px;">
+                    <img src="https://drive.google.com/uc?id=1HbUsRT-HsQiDbPz8mR_Wsz8CMnwr8EWn" width="800">
+                </div>
+                <div>
+
+            <div style="padding-top: 20px; display: flex; flex-direction: column; align-items: center;">
+                <div style="margin-bottom: 10px;">
+                    <img src="https://drive.google.com/uc?id=1MBquD0klQArLRzpPe_NZPLw97ih8hmuS" width="800">
+                </div>
+                <div>
+
+        
+
+        <ul>
+            <li>Let us compare the R2 values of the model using the selected features from RFXGB and the selected features from the correlation coefficient. For the linear models, the R2 values are almost identical. This means that random forest and XGB were able to find a subset of 13 features that explained 65% of the variance in the target variable, while the method with correlation coefficients found 25 variables that explained the 65% of the variance in the target variable. (Note that only five of these variables overlapped!)</li>
+            <li>The R^2 score improved slightly using the correlation coefficients.</li>
+            <li>We see similar results with RMSE scores. The RMSE score is the same for the linear models and even increases slightly for SVR.</li>
+            <li>Given the reduction in variables for very similar R^2 and RMSE values, we can conclude that the RFXGB form of feature selection is more powerful than the correlation coefficient method because we use less features (a less complex, more interpretable) model to achieve similar results.</li>
+        </ul>
+    </details>
+
+    <h2>Using Principal Component Analysis (PCA)</h2>
+
+    <details>
+        <summary>Click to Expand</summary>
+        <div style="margin-top: 10px;"> <!-- Added margin-top here -->
+        <ul>
+            <li>Principal component analysis (PCA) is a dimensionality technique used to transform a large number of correlated features into a lower-dimensional set of uncorrelated features. The goal is to reduce the number of features while retaining the most information.</li>
+            <li>This set of features, called the principal components, are linear combinations of the original features.</li>
+            <li>The first principle component (PC) vector is the direction along which the data varies the most. In other words, if we projected our data along this vector, the data would be most spread out along this direction.</li>
+            <li>The first principal component can also be interpreted as the vector that minimizes the distance between the data points and the PC1 vector they were projected on.</li>
+            <li>Following principal components (PC2, PC3, etc.) are linear combinations of the original features that are uncorrelated with the previous principal components and capture the most amount variance given this constraint.</li>
+
+        </ul>
+    </div>
+
+
+
+
+
+        <div style="padding-top: 20px; display: flex; flex-direction: column; align-items: center;">
+                <div style="margin-bottom: 10px;">
+                    <img src="https://drive.google.com/uc?id=1kLTQkGZZpNkxLc7xgkytRRvAk-QrIHPs" width="800">
+                </div>
+                <div>
+
+        <p>Over 95 % of the variance in the target variable can be explained by 16 principal components. We could also reduce the amount of principal components, as after the 10th principal component, the amount of explained variance is less than 2%.</p>
+
+
+        <div style="padding-top: 20px; display: flex; flex-direction: column; align-items: center;">
+                <div style="margin-bottom: 10px;">
+                    <img src="https://drive.google.com/uc?id=1qSoV0XJChe0CqkVnd1q5hcwpF1SmQs2E" width="800">
+                </div>
+                <div>
+
+        <div style="padding-top: 20px; display: flex; flex-direction: column; align-items: center;">
+                <div style="margin-bottom: 10px;">
+                    <img src="https://drive.google.com/uc?id=1hdwKwOFQw6I73gIwImfC8jlkcV9u4GQV" width="800">
+                </div>
+                <div>
+
+        <p>Nearly all our models performed worse using PCA.</p>
+
+        <p>This is not entirely surprising for SVR, DT, RF, and XGB. Why is this?
+            <ul>
+                <li>Dimensionality reduction issues: PCA is a dimensionality reduction technique that aims to create a new set of uncorrelated features from many features. This corrects for multicollinearity, which in some cases can improve model performance. However, SVR, DT, RF, and XGB are known for their capabilities to both handle large features numbers and multicollinearity relatively well, so reducing features can lead to a loss of information.</li>
+                <li>Nonlinear relationships: Moreover, SVR, DT, RF, and XGB can capture non-linear relationships in the data, while PCA focuses on linear transformation. It is possible that PCA may distort the non-linear relationships in our data.</li>
+                <li>Oversimplification: While PCA aims to simplify the data while still explaining the most variance, it still reduces the complexity of the original features, leading to poorer modeling.
+                    <ul>
+                        <li>Tree-based models are particularly known for handling higher dimensional data, and reducing dimensionality in PCA may lead to weaker performance.</li>
+                    </ul>
+                </li>
+            </ul>
+        </p>
+
+        <p>Our linear regression models had the worst change in performance in terms of RMSE-- an almost three-point increase. Let us dissect this:
+            <ul>
+                <li>Relationships are not linear: PCA does not change the linear assumption between features and target variables. It only transforms the original data set to a new data set of linearly uncorrelated features. However, if the relationship between the features and target variables in nonlinear, which based on previous examples is the case, most models that have a linear assumption will not perform well.</li>
+            </ul>
+        </p>
+    </details>
+</body>
+
+</html>
