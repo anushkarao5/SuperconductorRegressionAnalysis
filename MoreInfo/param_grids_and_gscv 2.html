@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Understanding Parameter Grids and GridSearchCV</title>
+</head>
+<body>
+    <h1>Understanding Parameter Grids</h1>
+    <p><a href="https://github.com/anushkarao5/SuperconductorRegressionAnalysis/blob/main/README.md#non-neural-network-models" target="_blank">Back to Github</a></p>
+
+
+    <details>
+        <summary>Linear Regression:</summary>
+        <ul>
+            <li><strong>fit_intercept</strong>: [<em>True</em>, <em>False</em>]</li>
+            <ul>
+                <li>Whether or not we calculate the intercept in the equation.</li>
+                <li>The intercept is the <code>b0</code> value: the value of the critical temperature when all predictors are held as 0.</li>
+                <li>If we put <code>fit_intercept=False</code>, the intercept will be set to 0, and the line will pass through the origin. If we put <code>fit_intercept=True</code>, it will calculate an intercept value.</li>
+            </ul>
+        </ul>
+    </details>
+
+    <details>
+        <summary>Ridge Regression:</summary>
+        <ul>
+            <li><strong>alpha</strong>: Positive value that controls the strength of regularization.</li>
+            <ul>
+                <li>Larger alpha results in more regularization, shrinking coefficients, and less overfitting.</li>
+                <li>Smaller alpha results in less regularization, allowing larger coefficients but potentially leading to overfitting.</li>
+                <li>Serves a similar purpose as lambda.</li>
+            </ul>
+        </ul>
+    </details>
+
+    <details>
+        <summary>Lasso Regression:</summary>
+        <ul>
+            <li><strong>alpha</strong>: Similar to Ridge Regression, it controls the strength of regularization.</li>
+        </ul>
+    </details>
+
+    <details>
+        <summary>Support Vector Regression:</summary>
+        <ul>
+            <li><strong>C</strong>: Regularization parameter.</li>
+            <ul>
+                <li>Smaller C results in less regularization, allowing a larger margin and preventing overfitting.</li>
+                <li>Larger C results in more regularization, leading to a smaller margin and closer fit to training data, potentially overfitting.</li>
+            </ul>
+            <li><strong>kernel</strong>:</li>
+            <ul>
+                <li>Used to transform data into a higher-dimensional space.</li>
+                <li>Options include:</li>
+                <ul>
+                    <li><strong>Linear</strong>: Represents a linear relationship between features and the target variable.</li>
+                    <li><strong>RBF (Radial Basis Function)</strong>: Used for capturing nonlinear patterns in data.</li>
+                </ul>
+            </ul>
+        </ul>
+    </details>
+
+    <details>
+        <summary>Decision Tree:</summary>
+        <ul>
+            <li><strong>Max_depth</strong>: Number of levels from the root node to the leaf node.</li>
+            <ul>
+                <li>Example with max_depth=2:</li>
+                <li>Root node (Years &lt; 5) = Level 0</li>
+                <li>Decision node (Jobs &gt; 2) = Level 1</li>
+                <li>Leaf nodes (15) and (10) = Level 2</li>
+                <div style="display: flex; justify-content: center; align-items: center; height: 300px;">
+                    <img src="https://drive.google.com/uc?id=15wNx0bnaQ0hmx3gUUF4idJpJ33TsY7b0" width="400">
+                </div>
+            </ul>
+        </ul>
+    </details>
+
+    <details>
+        <summary>Random Forest:</summary>
+        <ul>
+            <li><strong>N_estimators</strong>: Number of decision trees to use in the random forest.</li>
+            <li><strong>Max_depth</strong>: Similar to Decision Trees.</li>
+        </ul>
+    </details>
+
+    <details>
+        <summary>XGBoost:</summary>
+        <ul>
+            <li><strong>N_estimators</strong>: Specifies how many decision trees to create.</li>
+            <ul>
+                <li>For example, 100 decision trees means XGBoost combines predictions from all 100 trees to get the final result.</li>
+            </ul>
+            <li><strong>Learning_rate</strong>: Controls how quickly the model learns from training data.</li>
+            <ul>
+                <li>Small learning rates lead to slower learning but may fit training data well, potentially overfitting.</li>
+                <li>Large learning rates result in faster learning but may underfit the data.</li>
+            </ul>
+            <li><strong>Max_depth</strong>: The number of levels from the root node to the leaf node for each model.</li>
+            <li><strong>Min_child_weight</strong>:</li>
+            <ul>
+                <li>Minimum sum of sample weights required for a parent node to be divided into child nodes.</li>
+                <li>Controls the complexity of the model by altering child weights.</li>
+            </ul>
+            <li><strong>Subsample</strong>: Percent of training data used to build each tree.</li>
+            <ul>
+                <li>Values less than 1 may prevent overfitting by learning from different parts of the data.</li>
+            </ul>
+            <li><strong>Colsample_bytree</strong>: Percentage of features randomly chosen and used for each tree.</li>
+            <ul>
+                <li>Leads to more robust models as each tree is trained on slightly different data.</li>
+            </ul>
+            <li><strong>Gamma</strong>: Minimum loss reduction needed to justify splitting a leaf node.</li>
+        </ul>
+    </details>
+
+    <h2>Understanding GridSearchCV</h2>
+
+    <details>
+    <summary>GridSearchCV Process:</summary>
+    <ul>
+        <li>GridSearchCV checks which combination of hyperparameters maximizes the scoring function for a particular model type.</li>
+        <li>Let's consider how GridSearchCV with five folds works using the XGBoost model type. Based on the parameter grid, we will check 14 unique XGBoost models because there are 2 possible values for each hyperparameter, and there are 7 total hyperparameters (2*7=14).</li>
+        <li>For each model, we use cross-validation with five folds to maximize the scoring criteria, neg mean square error.</li>
+        <li>We split the training data into five folds. We hold out the first fold as the validation set and build our XGBoost model on the remaining four folds. Then we evaluate the model's performance on the validation set using the neg mean square error loss function.</li>
+        <li>We repeat this process four more times, so that each of the folds has been used as the validation set. We average the five neg mean square errors from each of the validation sets and store the averaged value as the score for that particular XGBoost model.</li>
+        <li>Since we have 14 possible XGBoost models, we repeat this process a total of 14 times, so that we have 14 negative root mean square error scores.</li>
+        <li>The model with the largest negative root mean square error is stored as the best estimator for the XGBoost model.</li>
+    </ul>
+</details>
+    <details>
+        <summary>GridSearchCV Parameters:</summary>
+        <ul>
+            <li><strong>estimator=pipe</strong>: the model type we are checking (e.g. XGBoost)</li>
+            <li><strong>param_grid=param_grid</strong>: the parameter grid we are interested in for a particular model type (e.g. the XGBoost parameter grid)</li>
+            <li><strong>cv=5</strong>: How many folds</li>
+            <li><strong>scoring='neg_mean_squared_errors'</strong>: the scoring function to optimize</li>
+            <li><strong>n_jobs=-1</strong>: How many jobs to run in parallel. -1 means using all processors</li>
+        </ul>
+    </details>
+
+    <details>
+        <summary>Why Neg Mean Square Error?</summary>
+        <p>Note that the scoring metric we use is negative mean square error. This is because GridSearchCV is designed to choose the estimator that maximizes the scoring function. If we simply put root mean square error as the scoring function, GridSearch will save the best estimator as the estimator with the largest RMSE, which is incorrect.</p>
+        <p>Example: Say for a particular regressor, we have six potential models. The root mean square errors of these models are:</p>
+        <ul>
+            <li>5, 9, 2, 1, 3, 4</li>
+        </ul>
+        <p>Since grid search seeks to maximize the scoring function, it will choose the best model as the model that has the RMSE of 9. However, this is the worst model. To correct for this, we negate all the RMSEs.</p>
+        <ul>
+            <li>-5, -9, -2, -1, -3, -4</li>
+        </ul>
+        <p>Now we let grid search maximize the scoring function, so that the model that has RMSE of -1 is saved as the best estimator.</p>
+    </details>
+</body>
+</html>
+
