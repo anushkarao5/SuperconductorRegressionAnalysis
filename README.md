@@ -172,6 +172,7 @@ Results for non-NN models using all features:
 - The XGB algorithm is a close second (RMSE = 10.74 and R^2= 0.90). 
 - Using all features, RF and XGB perform best: tree-based models are well equipped to handle multicollinearity, nonlinearity, and high dimensionality
 - Our linear models performed the worst using all 81 variables. This was largely due to the high multicollinearity between the variables.
+- Click [here](https://htmlpreview.github.io/?https://github.com/anushkarao5/SuperconductorRegressionAnalysis/blob/main/MoreInfo/non_nn_performance.html#non-neural-network-models) for a more detailed breakdown.
 
 ### Using RF and XGB Feature Selection 
 - After running the RF and XGB models using all our data, we used the feature importance scores built into both algorithms to determine which features were most important in predicting the critical temperature. Instead of inputting all 81 variables, we used only the top 10 most important features from RF and XGB. After accounting for overlap, we found 13 RFXGB features to plug into our linear models.
