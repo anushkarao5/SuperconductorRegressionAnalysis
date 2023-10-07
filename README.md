@@ -208,10 +208,10 @@ Results for non-NN models using all features:
 
 
 ### Using Correlation Coefficient Feature selection 
-- We next tried to plug in the 25 features that had a correlation coefficient magnitude of greater than 0.5 with the target variable. 
-- Using these selected features, the RMSE scores decreased only slightly in comparison to using the 13 selected features. 
-- Moreover, the R^2 values are almost identical when using the 13 RFXGB features and the 25 selected correlation features. 
-- This means that the RF and XGB algorithms found the least amount of features that explained the most amount of variance. Using these 13 features helps us create  a less complex, more interpretable model.
+- We next incorporated the 25 features that had a correlation coefficient magnitude of greater than 0.5 with the target variable (critical temperature).
+- Using these 25 features, the RMSE scores decreased only slightly compared to the RMSE scores using the 13 RFXGB-selected features.
+- Moreover, the R^2 values are almost identical when using the 13 RFXGB and 25 selected correlation features.
+- Since the change in RMSE and R^2 values is negligible when switching from 13 features to 25 features, we should use the RFXGB features to create our model. Using these 13 features helps us create a less complex and more interpretable model.
 
 
 <p align="center">
