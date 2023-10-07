@@ -157,6 +157,7 @@ In simple terms, we are:
 1) Comparing many versions of the same model type (ex: linear regression)
 2) Comparing the best version of each model type (ex: best linear regression, best ridge, best lasso, ect)
 
+To learn more about the parameter grid and GridSearchCV, click [here](https://htmlpreview.github.io/?https://github.com/anushkarao5/SuperconductorRegressionAnalysis/blob/main/MoreInfo/param_grids_and_gscv%202.html).
 ### Using All Features 
 
 <p align="center">
