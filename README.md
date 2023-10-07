@@ -80,7 +80,7 @@ We consider these regression models:
 - XGB Regression
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We look for a model and feature selection technique that optimizes our evaluation metrics (minimizes RMSE and maximizes R^2). For more information on both the models and the evaluation metrics, click here.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We look for a model and feature selection technique that optimizes our evaluation metrics (minimizes RMSE and maximizes R^2). For more information on both the models and the evaluation metrics, click [here](https://htmlpreview.github.io/?https://github.com/anushkarao5/SuperconductorRegressionAnalysis/blob/main/MoreInfo/models_and_metrics.html).
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Before we begin modeling, we create a simple pipeline that scales all input features for every model. Feature scaling ensures that all features have similar magnitudes, which prevents certain features (features with larger magnitudes) from dominating the training process.
 
