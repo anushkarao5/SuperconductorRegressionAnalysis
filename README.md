@@ -242,6 +242,7 @@ Of all our input feature sets, PCA resulted in the worst performance.
 <p align="center">
   <img src="Images/R2_PCA.png" alt="Image Alt Text" width="1000px" height="auto">
 </p>
+
 - Unsurprisingly, PCA increased the RMSE and decreased the R^2 value for the non-linear models. Since SVR and tree-based models are known for their capabilities to handle large feature numbers and multicollinearity relatively well, reducing the number of features could have led to information loss. 
 - PCA often improves scores in linear models. Why did our linear model scores become less optimal?
 - Given how well our non-linear models fit the data, we have a strong assumption that the features are not linearly related to the target variable. PCA does not change the linear assumption between features and target variables. It only transforms the original data set to a new data set of linearly uncorrelated features. However, if the relationship between the features and target variables is nonlinear, most models that have a linear assumption will not perform well.
