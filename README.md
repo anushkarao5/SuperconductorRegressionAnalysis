@@ -201,8 +201,8 @@ Results for non-NN models using all features:
 
 
 
-- Using only a reduced set of 13 features, the RMSE scores went up a few points in the non-tree-based models, likely due to a loss of information. However, R^2 is the more interesting metric here.
-- Surprisingly, the variations in these 13 features accounted for a minimum of 65% of the variation in the critical temperature for our non-tree-based models. In comparison, using all 81 features accounted for only 70% variation in the linear models. 
+- Using the reduced set of 13 features, the RMSE scores went up 2-3 points in the non-tree-based models, likely due to a loss of information. However, we must also look at the R^2 metric, which is perhaps more interesting in this case.
+- From the previous iteration, variation in all 81 features accounted for 70% of the variation in critical temperature for the non-tree-based models. In comparison, variations in these 13 features accounted for a minimum of 65% of the variation in the critical temperature for the same models. 
 - This means that variation in 60 features resulted in only 5% of the variation in our target variable!
 - Using RF and XGB, we found a subset of 13 features that are most important in predicting the critical temperature.
 
