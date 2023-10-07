@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Non NN Modeling without Dimensionality Reduction</title>
+    <style>
+        details {
+            margin: 10px 0;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        div.center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Non NN Modeling without Dimensionality Reduction</h1>
+
+    <h2>What models will we use?</h2>
+    <ul>
+        <li>Linear Regression</li>
+        <li>Ridge Regression</li>
+        <li>Lasso Regression</li>
+        <li>Support Vector Regression</li>
+        <li>Decision Tree Regression</li>
+        <li>Random Forest Regression</li>
+        <li>XGB Regression</li>
+    </ul>
+
+    <details>
+        <summary>More details on Models</summary>
+
+        <details>
+            <summary>Multiple Linear Regression</summary>
+            <ul>
+                <li>In multiple linear regression, we find slope estimates for all predictor variables to create a line or hyperplane that best fits the data.</li>
+                <li>The line or plane of best fit is the line or plane that minimizes the sum of squared residuals, where the residuals are the distance between the predicted values (y hat) and the actual values (y) for all n observations in the training data.</li>
+            </ul>
+            <div class="center">
+                 <img src="https://drive.google.com/uc?id=1vhlOv9VXi2jU5cKiwqDSz-ExsmLxXMSS" width="200" alt="Multiple Linear Regression Image">
+            </div>
+            <ul>
+                <li>This model operates under the assumptions that:</li>
+                <ul>
+                    <li>There is a linear relationship between the dependent variable (critical temperature) and the independent variables (our 81 features).</li>
+                    <li>There is little to no multicollinearity: the features are not highly correlated.</li>
+                </ul>
+                <li> Image source: James, Gareth, et al. An Introduction to Statistical Learning: With Applications in R. Springer, 2021. pg 69, 3.16 </li>
+            </ul>
+        </details>
+
+        
+
+        <details>
+            <summary>Ridge Regression</summary>
+            <ul>
+                <li>Ridge regression aims to address issues linear regression faces when modeling in higher dimensions, like overfitting.</li>
+                <li>Instead of just seeking slope estimates that minimize the RSS, in ridge regression we seek slope estimates for the predictors that minimize the RSS + a regularization term (λ * sum of the squared coefficients).</li>
+            </ul>
+            <div class="center">
+                <img src="https://drive.google.com/uc?id=1Wxb8OOjbgUaEDcze1pcZQsGBUez0DA6_" width="200">
+            </div>
+            <ul>
+                <li>Lambda controls the strength of regularization→ as lambda tends to infinity, regularization increases, and the coefficients of the independent variables shrink close to 0.</li>
+                <li>This discourages the model from overfitting to noise in the data.</li>
+                <li>Image source: James, Gareth, et al. An Introduction to Statistical Learning: With Applications in R. Springer, 2021. pg 237, 6.5
+            <ul>
+        </details>
+
+        <details>
+            <summary>Lasso Regression</summary>
+            <ul>
+                <li>In lasso regression, we seek slope estimates for the predictors that minimize the RSS + a slightly different regularization term (λ * sum of the absolute value of coefficients).</li>
+                <li>When we increase the hyperparameter lambda, regularization increases, and the slope coefficients shrink close to or exactly to 0.</li>
+            </ul>
+            <div class="center">
+                <img src="https://drive.google.com/uc?id=1Ub-cfbH84Py6JnSJKJ9F2B1fr3pwskG_" width="200">
+            </div>
+            <ul>
+                <li>Unlike ridge regression, lasso regression can actually shrink some coefficients to exactly 0.</li>
+                <li>This method performs natural feature selection by eliminating certain predictors from the model, making the model easier to interpret.</li>
+                <li>Image source: James, Gareth, et al. An Introduction to Statistical Learning: With Applications in R. Springer, 2021. pg 241, 6.7</li>
+            <ul>
+
+        </details>
+
+        <details>
+            <summary>Support Vector Regression</summary>
+            <ul>
+                <li>Support Vector Regression works by transforming the data into a higher dimensional space and then finding a line or curve that is closest to all the points in this transformed space.</li>
+                <li>SVR finds critical points, called support vectors, that are most essential for defining the line or curve.</li>
+                <li>SVR allows a margin around this line or curve. The goal is to find a line or curve that maximizes the number of points in this margin.</li>
+                <li>The line or curve that contains the maximum points within the margin and that is closest to the support vectors is the regression model.</li>
+            </ul>
+        </details>
+
+        <details>
+            <summary>Decision Tree Regression</summary>
+            <ul>
+                <li>Decision tree regression work by recursively splitting the data based on feature characteristics.</li>
+                <li>For previously unseen data, we fall down each of the decision trees and average the predicted values from each decision tree. This averaged value is our random forest prediction.</li>
+            </ul>
+            <div class="center">
+                <img src="https://drive.google.com/uc?id=15wNx0bnaQ0hmx3gUUF4idJpJ33TsY7b0" width="400">
+            </div>
+            <ul>
+                <li>In training our model, we first split the data based on condition 1: whether the person has worked less than five years. We get the number 5 by averaging all the salaries of people who worked less than five years.</li>
+                <li>Then we split on whether the person has had 2 or more jobs. We land upon 10 by averaging the salaries of all the people who have worked more than five years and have had less less than 2 jobs.</li>
+                <li>If we want to predict the salary of a new worker, (worked for 6 years and has had 1 previous job), we simple fall down the decision tree and arrive at 10, which is the predicted salary of the employee.</li>
+                <li>This is obviously a simplified version of the algorithm, but it demonstrates the idea well enough.</li>
+            <ul>
+
+
+        </details>
+
+        <details>
+            <summary>Random Forest Regression</summary>
+            <ul>
+                <li>Random Forest Regression combines multiple decision trees to make predictions.</li>
+                <li>We build each decision tree in the random forest using a random sample with replacement (bootstrapped sample) from the original data set.</li>
+                <li>For each tree, as each split, a random subset of m of the p total predictors are considered for the split criterion. Only one of the m predictors is used for the split. This diversifies the trees and makes the model less prone to overfitting.</li>
+                <li>For previously unseen data, we fall down each of the decision trees and average the predicted values from each decision tree. This averaged value is our random forest prediction.</li>
+            </ul>
+        </details>
+
+        <details>
+            <summary>XGB Regression</summary>
+            <ul>
+                <li>XGB regression is another type of ensemble, tree-based model.</li>
+                <li>Instead of building trees independently based on bootstrapped samples like in the random forest, we build trees sequentially based on the results of the previous trees.</li>
+                <li>XGB regression begins with a set of predictions (such as the average of the target variable), and then finds the errors by comparing the initial predictions to the actual values.</li>
+                <li>It then builds another tree to minimize the errors (residuals) from the previous tree.</li>
+                <li>The goal is that each iterative tree should have a smaller RSS, as the "next" tree should correct for the errors in the previous tree for more accurate predictions.</li>
+                <li>XGB combines the predictions from the initial tree and the revised tree to get a better estimate.</li>
+                <li>It continues building these trees to correct for errors in the predictions, which results in a stronger model made of all combined trees.</li>
+            </ul>
+        </details>
+    </details>
+
+    <h2>What metrics will we use?</h2>
+    <ul>
+        <li>Mean Square Error</li>
+        <li>Coefficient of Determination</li>
+    </ul>
+
+    <details>
+        <summary>More details on Metrics</summary>
+
+        <details>
+            <summary>Mean Square Error</summary>
+            <ul>
+                <li>Mean square error allows us to quantify the test error in a regression model by taking the average of the squared residuals.</li>
+                <li>A residual is the difference between the predicted value and the observed value.</li>
+                <li>Our goal is to minimize this value:</li>
+            </ul>
+            <div align="center">
+                <img src="https://drive.google.com/uc?id=1W3GmqETCx3y7uuew8SGTGHgw1FxrdBoX" width="200">
+            </div>
+            <ul>
+                <li>Yi: the true critical temperature for a material</li>
+                <li>Yi hat: the critical temperature we predicted based on our model</li>
+                <li>N: the total number of observations/materials in our test data</li>
+                <li>Image source: James, Gareth, et al. An Introduction to Statistical Learning: With Applications in R. Springer, 2021. pg 29, 2.5</li>
+            <ul>
+        </details>
+
+        <details>
+            <summary>Coefficient of Determination</summary>
+            <ul>
+                <li>The R^2 value is the proportion of variance in the target variable (the critical temperature) that can be attributed to the variation in the independent variables (the 81 features).</li>
+                <li>This is a metric between 0 and 1, where a model with a higher R^2 is a better fit and a model with a lower R^2 is a poorer fit.</li>
+                <li>Our goal is to maximize this value.</li>
+            </ul>
+        </details>
+    </details>
+</body>
+</html>
+
+
