@@ -174,7 +174,7 @@ Results for non-NN models using all features:
 - Our linear models performed the worst using all 81 variables. This was largely due to the high multicollinearity between the variables.
 
 ### Using RF and XGB Feature Selection 
-- After running the RF and XGB models using all our data, we used the feature importance scores built into both algorithms to determine which features were most important in making predicting the critical temperature. Instead of inputting all 81 variables, we used only the top 10 most important features from RF and XGB. After accounting for overlap, we found 13 RFXGB features to plug into our linear models.
+- After running the RF and XGB models using all our data, we used the feature importance scores built into both algorithms to determine which features were most important in predicting the critical temperature. Instead of inputting all 81 variables, we used only the top 10 most important features from RF and XGB. After accounting for overlap, we found 13 RFXGB features to plug into our linear models.
 
 <p align="center">
   <img src="Images/RFXGB_FI_graphs.png" alt="Image Alt Text" width="1000px" height="auto">
