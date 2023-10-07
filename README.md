@@ -155,7 +155,7 @@ param_grid = {
   
 In simple terms, we are: 
 1) Comparing many versions of the same model type (ex: linear regression)
-2) Comparing the best version of each model type (ex: linear regression, ridge, lasso, ect)
+2) Comparing the best version of each model type (ex: best linear regression, best ridge, best lasso, ect)
 
 ### Using All Features 
 
