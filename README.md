@@ -266,7 +266,7 @@ Why did the SNN and CNN perform better?
 - Feedforward simple neural networks are capable of capturing non-linear relationships between input and target variables. Based on the poor linear regression scores, it is very likely that the relationship between the input and output variables is not linear. SNNs are able to work with nonlinear data.
 -  CNNs have many similar benefits. Moreover, using both convolutional layers and pooling operations, CNNs are able to build hierarchies of features. These ranked features can help the model understand the relationships between the input variables and the target variables.
 -  CNNs can learn local patterns by sliding over the data in windows. This may help the model understand how features relate to one another.
--  For a more detailed breakdown, click here. 
+-  For a more detailed breakdown, click [here](https://htmlpreview.github.io/?https://github.com/anushkarao5/SuperconductorRegressionAnalysis/blob/main/MoreInfo/nn_model_performance%202.html). 
 
 
 
