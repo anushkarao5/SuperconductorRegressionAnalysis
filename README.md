@@ -252,7 +252,7 @@ Of all our input feature sets, PCA resulted in the worst performance.
 
 
 ## Neural Network Models
-- Next we explored how neural networks impact our performance. We explore three popular neural networks: a simple feed-forward neural network, a convolutional neural network, and a long short-term memory neural network. Note that we use extremely basic versions of these neural networks. For more information on how these networks work, click here.
+- Next we explored how neural networks impact our performance. We explore three popular neural networks: a simple feed-forward neural network, a convolutional neural network, and a long short-term memory neural network. Note that we use extremely basic versions of these neural networks. For more information on how these networks work, click [here](https://htmlpreview.github.io/?https://github.com/anushkarao5/SuperconductorRegressionAnalysis/blob/main/MoreInfo/nn_model_performance%202.html).
 
 <p align="center">
   <img src="Images/NN_metrics.png" alt="Image Alt Text" width="1000px" height="auto">
