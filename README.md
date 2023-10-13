@@ -51,8 +51,6 @@ features whose variance explained a minimum of 65% of the variability in the tar
 - There are 81 features representing the material properties of the superconductors. These 81 features are variations of 9 main features: number of elements, atomic mass,  first ionization energy, atomic radius, density, electron affinity, fusion heat, thermal conductivity, and valence. Click [here](https://htmlpreview.github.io/?https://github.com/anushkarao5/SuperconductorRegressionAnalysis/blob/main/MoreInfo/feature_breakdown.html) for a brief introduction to these features.
 
 
-Here is what the first five rows of the data frame look like before feature selection: 
-
 The target variable is the critical temperature:
 
 <p align="center">
